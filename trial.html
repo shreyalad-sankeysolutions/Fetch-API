@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch Example</title>
+</head>
+<body>
+  <h1>Fetch Example</h1>
+  <div id="status"></div>
+  <div id="data"></div>
+
+  <script>
+    let p = fetch("http://dummy.restapiexample.com/api/v1/employees")
+    p.then((value1) => {
+      document.getElementById('status').innerHTML = `Status: ${value1.status}, Success: ${value1.ok}`;
+      return value1.json();
+    }).then((value2) =>{
+      document.getElementById('data').innerHTML = JSON.stringify(value2);
+    }).catch(error => {
+      document.getElementById('status').innerHTML = `Error: ${error.message}`;
+    });
+  </script>
+</body>
+</html>
